@@ -14,6 +14,14 @@ About: SumMe is a collection of 25 videos created by users to show different rea
 Clone the repository, download the dataset from the given link, install all dependecies. You will be able to execute the code
 
 # Requirements
+tensorflow
+keras
+opencv
+numpy
+pandas
+matplotlib
+
+
 
 
 # Methodology
