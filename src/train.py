@@ -6,6 +6,18 @@ import os
 import tensorflow as tf
 from tensorflow.keras import optimizers
 
+from config import (
+    TRAIN_PATH,
+    VALID_PATH,
+    FEATURE_DIM,
+    SEQ_LEN,
+    STRIDE,
+    NUM_EPOCHS,
+    BATCH_SIZE,
+    LEARNING_RATE,
+    MODEL_SAVE_PATH,
+)
+
 from model import BiLSTMAttentionModel
 from feature_extraction import load_features_with_sliding_windows
 
@@ -19,28 +31,6 @@ if gpus:
         tf.config.experimental.set_memory_growth(gpu, True)
 
 tf.keras.mixed_precision.set_global_policy("mixed_float16")
-
-
-# =======================
-# Configuration
-# =======================
-BASE_FEATURE_PATH = "/mnt/d/Mass Projects/Video_Summ/new_dataset_features_npy1"
-TRAIN_PATH = os.path.join(BASE_FEATURE_PATH, "train")
-VALID_PATH = os.path.join(BASE_FEATURE_PATH, "valid")
-
-SEQ_LEN = 150
-STRIDE = 125
-FEATURE_DIM = 2048
-
-NUM_EPOCHS = 50
-BATCH_SIZE = 1
-LEARNING_RATE = 1e-5
-
-MODEL_SAVE_PATH = (
-    "/mnt/d/Mass Projects/Video_Summ/RESULTS/Models_2/"
-    "SUMME/video_summarization_4-heads_15k.keras"
-)
-os.makedirs(os.path.dirname(MODEL_SAVE_PATH), exist_ok=True)
 
 
 # =======================
@@ -78,7 +68,9 @@ def train():
         batch_size=BATCH_SIZE,
     )
 
+    os.makedirs(os.path.dirname(MODEL_SAVE_PATH), exist_ok=True)
     model.save(MODEL_SAVE_PATH)
+
     print(f"✅ Model saved at {MODEL_SAVE_PATH}")
 
 
