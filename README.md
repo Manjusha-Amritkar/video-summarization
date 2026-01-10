@@ -89,18 +89,22 @@ This centralized configuration makes the code **machine-independent** and **repr
 
 ## Evaluation
 
-Evaluation follows the standard protocol used in **SumMe** and **TVSum**:
+Evaluation follows the standard protocol used in **SumMe** and **TVSum** datasets:
 
-* Reconstruction error → frame importance
-* KTS-based temporal segmentation
-* Knapsack-based segment selection
-* Comparison with user summaries using **F1-score, Precision, and Recall**
+- Reconstruction error → frame importance
+- KTS-based temporal segmentation
+- Knapsack-based segment selection
+- Comparison with user summaries using **F1-score, Precision, and Recall**
+
+Due to differences in annotation formats, **separate evaluation scripts**
+are provided for each dataset.
 
 Run evaluation using:
 
 ```bash
-python src/evaluate.py
-```
+python src/evaluate_summe.py   # SumMe evaluation
+python src/evaluate_tvsum.py   # TVSum evaluation
+
 
 ### Evaluation Output
 
