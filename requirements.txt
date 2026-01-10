@@ -1,0 +1,18 @@
+# Core deep learning
+tensorflow>=2.10
+
+# Numerical computation
+numpy
+scipy
+
+# Data handling
+pandas
+
+# Video summarization utilities
+ruptures
+
+# Visualization (optional but common in research)
+matplotlib
+
+# Excel output support
+xlsxwriter
